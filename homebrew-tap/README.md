@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-brew tap OWNER/claude-code-scanner https://github.com/OWNER/claude-code-scanner
+brew tap ash-hun/claude-code-scanner https://github.com/ash-hun/claude-code-scanner
 brew install --cask claude-code-scanner
 ```
 
