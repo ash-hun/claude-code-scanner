@@ -36,6 +36,13 @@ brew tap ash-hun/claude-code-scanner
 brew install --cask claude-code-scanner
 ```
 
+> **⚠️ macOS에서 "손상되었습니다" 경고가 뜨는 경우**
+>
+> 코드 서명이 되어 있지 않아 Gatekeeper가 차단할 수 있습니다. 아래 명령으로 해제하세요:
+> ```bash
+> xattr -cr /Applications/Claude\ Code\ Scanner.app
+> ```
+
 #### 직접 빌드
 
 ```bash
@@ -209,6 +216,13 @@ Transparently shows what Claude Code CLI **actually sends** to the Anthropic API
 brew tap ash-hun/claude-code-scanner
 brew install --cask claude-code-scanner
 ```
+
+> **⚠️ If macOS shows "app is damaged" warning**
+>
+> The app is not code-signed. Run this to bypass Gatekeeper:
+> ```bash
+> xattr -cr /Applications/Claude\ Code\ Scanner.app
+> ```
 
 #### Build from source
 
