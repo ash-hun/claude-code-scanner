@@ -1,12 +1,12 @@
 cask "claude-code-scanner" do
-  version "0.1.1"
+  version "0.1.2"
 
   if Hardware::CPU.arm?
-    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-0.1.0-arm64.dmg"
-    sha256 "902d6d91e4ea3b5e1ea7e3a199731d57463c8154ddc32db1fbd3417e826a5eb1"
+    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-arm64.dmg"
+    sha256 "PLACEHOLDER_ARM64"
   else
-    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-0.1.0-x64.dmg"
-    sha256 "c516ba1161930896daaf3f3bb2bb991ce8309399783ce3c47f4a1ade1f9cfa1e"
+    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-x64.dmg"
+    sha256 "PLACEHOLDER_X64"
   end
 
   name "Claude Code Scanner"
@@ -19,6 +19,9 @@ cask "claude-code-scanner" do
     Docker Desktop is required for database features.
     Install it from https://www.docker.com/products/docker-desktop/ or:
       brew install --cask docker
+
+    If macOS shows "app is damaged" warning, run:
+      xattr -cr /Applications/Claude\\ Code\\ Scanner.app
   EOS
 
   zap trash: [
