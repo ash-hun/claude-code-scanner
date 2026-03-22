@@ -1,0 +1,163 @@
+/* ── Buttons ── */
+.btn {
+  padding: 7px 14px; border-radius: 5px; font-size: 12px; font-weight: 600;
+  cursor: pointer; border: none; transition: opacity .15s;
+  display: flex; align-items: center; gap: 6px; justify-content: center;
+}
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:not(:disabled):hover { opacity: .82; }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:not(:disabled):hover { opacity: .82; }
+.btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--blue); }
+.btn-sm { padding: 4px 10px; font-size: 11px; }
+.btn-lang {
+  padding: 4px 10px; border-radius: 5px; font-size: 11px;
+  background: none; border: 1px solid var(--border);
+  color: var(--dim); cursor: pointer; font-weight: 700;
+}
+
+/* ── Fields ── */
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 11px; color: var(--dim); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.field input, .field select {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 5px; color: var(--text);
+  padding: 6px 10px; font-size: 12px; font-family: var(--mono); outline: none;
+}
+.field input:focus { border-color: var(--blue); }
+
+/* ── Status ── */
+.proxy-status {
+  display: flex; align-items: center; gap: 8px; font-size: 12px;
+  padding: 8px 12px; border-radius: 6px;
+  background: var(--surface2); border: 1px solid var(--border);
+}
+.proxy-status.running { border-color: rgba(78,201,176,.4); background: rgba(78,201,176,.07); }
+.ps-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.proxy-status.running .ps-dot { background: var(--green); animation: pulse 1.5s infinite; }
+
+/* ── Command box ── */
+.proxy-cmd {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 5px; padding: 8px 10px;
+  font-family: var(--mono); font-size: 11px;
+  line-height: 1.6; white-space: nowrap; overflow-x: auto; color: var(--dim);
+}
+.proxy-cmd.active { color: var(--green); }
+
+/* ── Capture list entry ── */
+.capture-entry {
+  padding: 9px 13px; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background .12s;
+}
+.capture-entry:hover { background: var(--surface2); }
+.capture-entry.selected { background: rgba(86,156,214,.12); border-left: 3px solid var(--blue); }
+.capture-method { font-size: 10px; font-weight: 700; font-family: var(--mono); color: var(--green); margin-right: 5px; }
+.capture-path { font-size: 11px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.capture-model { font-size: 10px; color: var(--dim); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.capture-ts { font-size: 10px; color: var(--dim); opacity: .6; flex-shrink: 0; margin-left: 6px; }
+.capture-status { font-size: 10px; font-family: var(--mono); flex-shrink: 0; }
+.capture-status.ok { color: var(--green); }
+.capture-status.err { color: var(--red); }
+.capture-latency { font-size: 10px; color: var(--yellow); flex-shrink: 0; margin-left: 4px; }
+
+/* ── Capture groups ── */
+.capture-group {
+  border-bottom: 1px solid var(--border);
+}
+.capture-group-header {
+  padding: 10px 13px; cursor: pointer; transition: background .12s;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.capture-group-header:hover { background: var(--surface2); }
+.capture-group-header.selected { background: rgba(86,156,214,.12); border-left: 3px solid var(--blue); }
+.capture-group-top {
+  display: flex; align-items: center; gap: 6px; overflow: hidden;
+}
+.capture-group-msg {
+  flex: 1; font-size: 12px; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  line-height: 1.4;
+}
+.capture-group-badge {
+  font-size: 9px; font-family: var(--mono); padding: 1px 6px;
+  border-radius: 8px; flex-shrink: 0; font-weight: 600;
+}
+.capture-group-badge.count { background: rgba(86,156,214,.15); color: var(--blue); }
+.capture-group-badge.error { background: rgba(244,135,113,.15); color: var(--red); }
+.capture-group-meta {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; color: var(--dim); font-family: var(--mono);
+  margin-top: 4px; flex-wrap: wrap;
+}
+.capture-group-meta-tag {
+  padding: 1px 5px; border-radius: 3px; font-size: 9px;
+  background: rgba(255,255,255,.04); white-space: nowrap;
+}
+.capture-group-expand {
+  font-size: 8px; color: var(--dim); flex-shrink: 0; transition: transform .15s;
+  width: 16px; text-align: center;
+}
+.capture-group-expand.open { transform: rotate(90deg); }
+.capture-group-children {
+  display: none; background: var(--bg); border-top: 1px solid var(--border);
+}
+.capture-group-children.open { display: block; }
+.capture-group-children .capture-entry {
+  padding-left: 24px; font-size: 11px;
+  border-bottom: 1px solid rgba(62,62,66,.5);
+}
+
+/* ── Detail tabs ── */
+.dtabs {
+  display: flex; gap: 4px; padding: 7px 12px;
+  border-bottom: 1px solid var(--border); background: var(--surface); flex-shrink: 0;
+}
+.dtab {
+  padding: 3px 10px; font-size: 12px; border-radius: 4px; cursor: pointer;
+  background: none; border: 1px solid transparent; color: var(--dim); transition: all .15s;
+}
+.dtab.active { background: var(--surface2); border-color: var(--border); color: var(--text); }
+.dtab:hover:not(.active) { color: var(--text); }
+
+/* ── Token pill ── */
+.token-pill {
+  padding: 6px 12px; font-size: 11px; color: var(--dim);
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+}
+.tt-badge {
+  background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;
+  font-family: var(--mono);
+}
+
+/* ── Empty state ── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; color: var(--dim); font-size: 13px; text-align: center; gap: 8px; padding: 20px;
+  line-height: 1.7;
+}
+
+/* ── How-box ── */
+.how-box {
+  background: rgba(86,156,214,.05); border: 1px solid rgba(86,156,214,.18);
+  border-radius: 7px; padding: 11px 13px; display: flex; flex-direction: column; gap: 8px;
+}
+.how-title { font-size: 10px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .7px; }
+.how-text { font-size: 12px; color: var(--dim); line-height: 1.55; }
+
+/* ── Inject chip ── */
+.inject-chip {
+  font-size: 10px; padding: 2px 7px; border-radius: 10px;
+  color: var(--red); border: 1px solid rgba(244,135,113,.3); background: rgba(244,135,113,.08);
+  text-transform: none; letter-spacing: 0; font-family: var(--mono);
+}
+
+/* ── Config body ── */
+.config-body { flex: 1; overflow-y: auto; padding: 13px; display: flex; flex-direction: column; gap: 11px; }
+.config-footer {
+  padding: 11px 13px; border-top: 1px solid var(--border);
+  display: flex; gap: 8px; flex-shrink: 0; align-items: center;
+}
