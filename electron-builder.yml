@@ -5,8 +5,7 @@ directories:
 files:
   - dist/**
   - scripts/init-db.sql
-  - assets/icon.png
-  - assets/icon.icns
+  - assets/**
   - node_modules/pg/**
 mac:
   icon: assets/icon.icns

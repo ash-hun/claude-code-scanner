@@ -1,6 +1,6 @@
 {
   "name": "claude-code-scanner",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Claude Code API Traffic Scanner & Analyzer",
   "license": "MIT",
   "author": "choijaehun",

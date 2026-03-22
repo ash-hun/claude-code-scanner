@@ -42,7 +42,8 @@ function createWindow(): void {
       }, 1500);
     });
   } else {
-    win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+    // __dirname = dist/main/main/ → ../../renderer/index.html
+    win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'index.html'));
   }
 
   win.once('ready-to-show', () => win.show());
