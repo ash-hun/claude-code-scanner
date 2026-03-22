@@ -6,7 +6,7 @@
   "author": "choijaehun",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OWNER/claude-code-scanner"
+    "url": "https://github.com/ash-hun/claude-code-scanner"
   },
   "main": "dist/main/main/index.js",
   "scripts": {

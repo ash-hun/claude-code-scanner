@@ -2,16 +2,16 @@ cask "claude-code-scanner" do
   version "0.1.0"
 
   if Hardware::CPU.arm?
-    url "https://github.com/OWNER/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-arm64.dmg"
+    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-arm64.dmg"
     sha256 "PLACEHOLDER_ARM64_SHA256"
   else
-    url "https://github.com/OWNER/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-x64.dmg"
+    url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-x64.dmg"
     sha256 "PLACEHOLDER_X64_SHA256"
   end
 
   name "Claude Code Scanner"
   desc "Claude Code API Traffic Scanner & Analyzer"
-  homepage "https://github.com/OWNER/claude-code-scanner"
+  homepage "https://github.com/ash-hun/claude-code-scanner"
 
   depends_on cask: "docker"
 
