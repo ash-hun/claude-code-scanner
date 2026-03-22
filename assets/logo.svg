@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <rect width="40" height="40" rx="8" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40">
+      <stop offset="0%" stop-color="#569cd6"/>
+      <stop offset="100%" stop-color="#c586c0"/>
+    </linearGradient>
+  </defs>
+  <!-- Scanner rays -->
+  <path d="M12 28 L20 8 L28 28" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="14" y1="22" x2="26" y2="22" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="20" cy="15" r="2.5" fill="#fff"/>
+  <!-- Pulse dots -->
+  <circle cx="9" cy="20" r="1.5" fill="#4ec9b0" opacity="0.8"/>
+  <circle cx="31" cy="20" r="1.5" fill="#4ec9b0" opacity="0.8"/>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "name": "claude-code-scanner",
+  "version": "0.1.0",
+  "description": "Claude Code API Traffic Scanner & Analyzer",
+  "license": "MIT",
+  "author": "choijaehun",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/claude-code-scanner"
+  },
+  "main": "dist/main/main/index.js",
+  "scripts": {
+    "dev": "concurrently -n main,renderer \"tsc -p tsconfig.main.json -w\" \"vite dev -c vite.config.ts\"",
+    "dev:electron": "electron .",
+    "build": "npm run build:renderer && npm run build:main",
+    "build:renderer": "vite build -c vite.config.ts",
+    "build:main": "tsc -p tsconfig.main.json",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
+    "test": "npm run test:unit",
+    "test:unit": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/pg": "^8.20.0",
+    "concurrently": "^9.1.2",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.1"
+  }
+}

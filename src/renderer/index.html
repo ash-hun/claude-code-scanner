@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Scanner</title>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="appHeader">
+    <div class="logo">
+      <img src="../../assets/logo.svg" alt="logo" style="width:28px;height:28px" id="logoImg">
+      <span class="logo-text">Claude Code Scanner</span>
+      <span style="font-size:11px;color:var(--dim)" id="logoSub">monitoring tool</span>
+    </div>
+    <div class="header-right">
+      <div class="header-proxy-status" id="headerProxyStatus" style="display:none">
+        <span class="header-proxy-dot off" id="headerProxyDot"></span>
+        <span id="headerProxyText">Stopped</span>
+      </div>
+      <button class="header-settings-btn" id="settingsBtn" title="Settings" style="display:none">⚙️</button>
+      <button class="btn-lang" id="langToggleBtn">EN</button>
+    </div>
+  </header>
+
+  <!-- Main layout (hidden until proxy starts) -->
+  <div class="main" id="mainView" style="display:none">
+    <!-- Left: Capture List -->
+    <div class="capture-list">
+      <div class="panel-header">
+        <span id="captureListTitle">CLAUDE에게 지시한 내용</span>
+        <span style="font-size:10px;color:var(--dim)" id="captureCount">0</span>
+      </div>
+      <div class="capture-list-items" id="captureListItems">
+        <div class="empty-state" id="captureEmpty"></div>
+      </div>
+    </div>
+
+    <!-- Right: Detail Panel -->
+    <div class="detail-panel">
+      <div class="dtabs" id="detailTabs">
+        <button class="dtab active" data-tab="messages">Messages</button>
+        <button class="dtab" data-tab="request">Request</button>
+        <button class="dtab" data-tab="response">Response</button>
+        <button class="dtab" data-tab="analysis" style="color:var(--purple)">Analysis</button>
+        <button class="dtab" data-tab="stats" style="color:var(--yellow)">Stats</button>
+      </div>
+      <div id="detailView" style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+        <div class="empty-state" id="detailEmpty">
+          <span style="font-size:28px">🔍</span>
+          <span id="selectRequestText"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Landing Page (shown on startup) -->
+  <div class="landing-overlay" id="landingPage">
+    <div class="landing-card">
+      <img src="../../assets/logo.svg" alt="logo" class="landing-logo">
+      <div class="landing-title">Claude Code Scanner</div>
+      <div class="landing-sub">
+        Claude Code CLI의 실제 API 트래픽을 가로채<br>실시간으로 분석합니다.
+      </div>
+      <div class="landing-field">
+        <label>PORT</label>
+        <input type="number" id="landingPort" value="9002" min="1024" max="65535">
+      </div>
+      <button class="landing-start" id="landingStartBtn">▶ Start Proxy</button>
+      <div class="landing-note">
+        프록시 시작 후 아래 명령으로 Claude Code를 실행하세요:<br>
+        <code style="color:var(--green);font-family:var(--mono)">ANTHROPIC_BASE_URL=http://localhost:9002 claude</code>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

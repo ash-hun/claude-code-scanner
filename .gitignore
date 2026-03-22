@@ -1,0 +1,8 @@
+node_modules/
+dist/
+release/
+*.env
+.env.*
+!.env.example
+_reference/
+CLAUDE.md

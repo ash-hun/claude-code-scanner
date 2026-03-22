@@ -1,0 +1,168 @@
+/* ── Analysis View ── */
+.analysis-container { padding: 16px; display: flex; flex-direction: column; gap: 20px; }
+
+/* Section — collapsible */
+.analysis-section {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.analysis-section-header {
+  padding: 10px 14px; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid var(--border); background: var(--surface2);
+  text-transform: uppercase; letter-spacing: .5px;
+  cursor: pointer; user-select: none;
+}
+.analysis-section-header:hover { background: rgba(255,255,255,.04); }
+.section-toggle { font-size: 10px; color: var(--dim); transition: transform .15s; }
+.section-toggle.collapsed { transform: rotate(-90deg); }
+.analysis-section-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.analysis-section-body.collapsed { display: none; }
+
+/* ── Request Anatomy ── */
+.anatomy-bar-container { display: flex; flex-direction: column; gap: 6px; }
+.anatomy-bar-row { display: flex; align-items: center; gap: 10px; font-size: 11px; }
+.anatomy-bar-label { width: 90px; color: var(--dim); flex-shrink: 0; text-align: right; }
+.anatomy-bar-track { flex: 1; height: 18px; background: var(--bg); border-radius: 3px; overflow: hidden; position: relative; }
+.anatomy-bar-fill { height: 100%; border-radius: 3px; transition: width .3s ease; min-width: 2px; }
+.anatomy-bar-value { width: 80px; font-family: var(--mono); color: var(--text); font-size: 10px; text-align: right; flex-shrink: 0; }
+.anatomy-bar-pct { width: 40px; font-family: var(--mono); color: var(--dim); font-size: 10px; flex-shrink: 0; }
+
+.anatomy-detail { padding: 8px 12px; background: var(--bg); border-radius: 6px; font-size: 11px; }
+.anatomy-detail-title { font-size: 10px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.anatomy-detail-row {
+  display: flex; align-items: center; gap: 8px; padding: 3px 0;
+  font-family: var(--mono); font-size: 11px;
+}
+.anatomy-detail-icon { width: 16px; text-align: center; flex-shrink: 0; }
+.anatomy-detail-name { flex: 1; color: var(--text); }
+.anatomy-detail-size { color: var(--dim); flex-shrink: 0; }
+.anatomy-detail-pct { color: var(--dim); font-size: 10px; width: 40px; text-align: right; flex-shrink: 0; }
+
+.anatomy-summary {
+  display: flex; gap: 16px; font-size: 11px; color: var(--dim);
+  padding: 8px 12px; background: var(--bg); border-radius: 6px;
+  font-family: var(--mono);
+}
+.anatomy-summary span { color: var(--text); font-weight: 600; }
+
+/* ── Operation Flow ── */
+.op-flow { display: flex; flex-direction: column; gap: 0; position: relative; }
+.op-flow::before {
+  content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.op-node {
+  position: relative; padding: 8px 12px 8px 40px; transition: background .15s;
+}
+.op-node:hover { background: rgba(255,255,255,.02); }
+.op-dot {
+  position: absolute; left: 10px; top: 12px;
+  width: 12px; height: 12px; border-radius: 50%; border: 2px solid;
+  background: var(--bg); z-index: 1;
+}
+.op-dot.read   { border-color: var(--blue); }
+.op-dot.write  { border-color: var(--green); }
+.op-dot.edit   { border-color: var(--yellow); }
+.op-dot.bash   { border-color: var(--orange); }
+.op-dot.grep   { border-color: var(--purple); }
+.op-dot.glob   { border-color: var(--purple); }
+.op-dot.skill  { border-color: var(--purple); }
+.op-dot.agent  { border-color: var(--red); }
+.op-dot.mcp    { border-color: #4ec9dc; }
+.op-dot.user   { border-color: var(--blue); background: var(--blue); }
+.op-dot.assistant { border-color: var(--green); background: var(--green); }
+
+.op-header { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.op-index { color: var(--dim); font-size: 10px; font-family: var(--mono); min-width: 20px; }
+.op-name { font-weight: 600; }
+.op-name.read   { color: var(--blue); }
+.op-name.write  { color: var(--green); }
+.op-name.edit   { color: var(--yellow); }
+.op-name.bash   { color: var(--orange); }
+.op-name.grep   { color: var(--purple); }
+.op-name.glob   { color: var(--purple); }
+.op-name.skill  { color: var(--purple); }
+.op-name.agent  { color: var(--red); }
+.op-name.mcp    { color: #4ec9dc; }
+
+.op-detail {
+  font-size: 11px; color: var(--dim); font-family: var(--mono);
+  margin-top: 4px; line-height: 1.5;
+  white-space: pre-wrap; word-break: break-word;
+  max-height: 2.8em; overflow: hidden;
+  cursor: pointer; position: relative;
+}
+.op-detail.expanded { max-height: none; }
+.op-detail:not(.expanded)::after {
+  content: '▼ more'; position: absolute; right: 0; bottom: 0;
+  background: var(--surface); padding: 0 6px;
+  font-size: 9px; color: var(--blue); cursor: pointer;
+}
+.op-detail-key { color: var(--dim); }
+.op-detail-val { color: var(--text); }
+.op-result {
+  font-size: 10px; color: var(--green); margin-top: 3px;
+  font-family: var(--mono); white-space: pre-wrap; word-break: break-word;
+  max-height: 2.4em; overflow: hidden;
+  cursor: pointer; position: relative;
+}
+.op-result.expanded { max-height: none; }
+.op-result:not(.expanded)::after {
+  content: '▼ more'; position: absolute; right: 0; bottom: 0;
+  background: var(--surface); padding: 0 6px;
+  font-size: 9px; color: var(--blue);
+}
+.op-result.error { color: var(--red); }
+
+.op-msg {
+  position: relative; padding: 6px 12px 6px 40px;
+  font-size: 12px; font-weight: 600;
+}
+
+/* ── Mechanism chips ── */
+.mech-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 0 8px; }
+.mech-chip {
+  display: flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;
+  font-family: var(--mono);
+}
+.mech-chip.found { opacity: 1; }
+.mech-chip.not-found { opacity: .2; }
+.mech-chip.cm  { background: rgba(78,201,176,.12); color: var(--green); border: 1px solid rgba(78,201,176,.3); }
+.mech-chip.st  { background: rgba(86,156,214,.12); color: var(--blue); border: 1px solid rgba(86,156,214,.3); }
+.mech-chip.sc  { background: rgba(220,220,170,.1); color: var(--yellow); border: 1px solid rgba(220,220,170,.25); }
+.mech-chip.sk  { background: rgba(197,134,192,.12); color: var(--purple); border: 1px solid rgba(197,134,192,.3); }
+.mech-chip.sa  { background: rgba(244,135,113,.12); color: var(--red); border: 1px solid rgba(244,135,113,.3); }
+.mech-chip.mc  { background: rgba(78,201,220,.1); color: #4ec9dc; border: 1px solid rgba(78,201,220,.25); }
+.mech-chip.fs  { background: rgba(206,145,120,.1); color: var(--orange); border: 1px solid rgba(206,145,120,.25); }
+
+/* Mechanism detail blocks */
+.mech-block {
+  padding: 10px 12px; background: var(--bg); border-radius: 6px;
+  border-left: 3px solid var(--border);
+}
+.mech-block.cm { border-left-color: var(--green); }
+.mech-block.st { border-left-color: var(--blue); }
+.mech-block.sc { border-left-color: var(--yellow); }
+.mech-block.sk { border-left-color: var(--purple); }
+.mech-block.sa { border-left-color: var(--red); }
+.mech-block.mc { border-left-color: #4ec9dc; }
+.mech-block-title { font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+.mech-block-content {
+  font-size: 11px; font-family: var(--mono); color: var(--dim);
+  white-space: pre-wrap; word-break: break-word;
+  line-height: 1.6;
+  max-height: 4.5em; overflow: hidden;
+  cursor: pointer; position: relative;
+}
+.mech-block-content.expanded { max-height: none; }
+.mech-block-content:not(.expanded)::after {
+  content: '▼ 더보기'; position: absolute; right: 0; bottom: 0;
+  background: var(--bg); padding: 0 8px;
+  font-size: 9px; color: var(--blue); cursor: pointer;
+}
+.mech-flow-arrow { color: var(--dim); font-size: 12px; padding: 4px 0; text-align: center; }
+.mech-kv { display: flex; gap: 8px; font-size: 11px; font-family: var(--mono); padding: 2px 0; }
+.mech-kv-key { color: var(--dim); flex-shrink: 0; }
+.mech-kv-val { color: var(--text); word-break: break-all; }

@@ -1,0 +1,21 @@
+appId: com.claude-code-scanner.app
+productName: Claude Code Scanner
+directories:
+  output: release
+files:
+  - dist/**
+  - scripts/init-db.sql
+  - assets/icon.png
+  - assets/icon.icns
+  - node_modules/pg/**
+mac:
+  icon: assets/icon.icns
+  category: public.app-category.developer-tools
+  artifactName: Claude-Code-Scanner-${version}-${arch}.${ext}
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+win:
+  target: nsis

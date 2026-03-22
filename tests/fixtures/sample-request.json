@@ -1,0 +1,34 @@
+{
+  "model": "claude-sonnet-4-6-20260322",
+  "max_tokens": 8096,
+  "system": [
+    { "type": "text", "text": "You are a helpful assistant." },
+    { "type": "text", "text": "Respond concisely and directly." }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": "<system-reminder>\nContents of /Users/dev/.claude/CLAUDE.md (user's private global instructions for all projects):\n\n# Global Rules\nAlways use TypeScript.\n\nContents of /project/CLAUDE.md (project instructions, checked into the codebase):\n\n# Project Rules\nUse Vite for bundling.\n\nContents of /Users/dev/.claude/rules/git-rules.md (user's private global instructions for all projects):\n\n# Git Rules\nCommit in Korean.\n\nContents of /Users/dev/.claude/projects/foo/memory/MEMORY.md (user's auto-memory, persists across conversations):\n\n# Memory\nUser prefers dark mode.\n</system-reminder>\n<command-message>commit</command-message>\nPlease commit the changes"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        { "type": "text", "text": "I'll commit the changes." },
+        { "type": "tool_use", "id": "tu_skill_1", "name": "Skill", "input": { "skill": "commit", "args": "-m 'fix: update'" } },
+        { "type": "tool_use", "id": "tu_agent_1", "name": "Agent", "input": { "description": "run tests", "subagent_type": "general-purpose", "prompt": "Run all tests" } },
+        { "type": "tool_use", "id": "tu_mcp_1", "name": "mcp__github__create_pull_request", "input": { "title": "Fix update", "base": "main" } },
+        { "type": "tool_use", "id": "tu_read_1", "name": "Read", "input": { "file_path": "/src/main.ts" } },
+        { "type": "tool_use", "id": "tu_bash_1", "name": "Bash", "input": { "command": "npm test" } }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        { "type": "tool_result", "tool_use_id": "tu_skill_1", "content": "Committed successfully" },
+        { "type": "tool_result", "tool_use_id": "tu_read_1", "content": "file contents here" },
+        { "type": "tool_result", "tool_use_id": "tu_bash_1", "content": "All tests passed" },
+        { "type": "tool_result", "tool_use_id": "tu_mcp_1", "content": "PR #42 created" }
+      ]
+    }
+  ]
+}
