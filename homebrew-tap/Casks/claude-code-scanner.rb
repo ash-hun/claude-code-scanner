@@ -1,5 +1,5 @@
 cask "claude-code-scanner" do
-  version "0.1.2"
+  version "0.1.3"
 
   if Hardware::CPU.arm?
     url "https://github.com/ash-hun/claude-code-scanner/releases/download/v#{version}/Claude-Code-Scanner-#{version}-arm64.dmg"
